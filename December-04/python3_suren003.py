@@ -5,17 +5,6 @@ def isleap(x):
         return True
     else:
         return False
-def daycount(x,y):
-    trty=[4,6,9,11]
-    if x==2:
-        if isleap(y):
-            return 29
-        else:
-            return 28
-    elif x in trty:
-        return 30
-    else:
-        return 31
 n=int(input("Number of Ice Creams : "))
 dates=input("Manufacture Dates : ")
 bbday=input("Best Befor days : ")
@@ -47,8 +36,8 @@ while i<len(givendate):
 i=0
 while i<len(date)//3:
     date[i*3]+=bbday[i]
-    while date[i*3]>daycount(date[i*3+1],date[i*3+2]):
-        date[i*3]-=daycount(date[i*3+1],date[i*3+2])
+    while date[i*3]>30:
+        date[i*3]-=30
         date[i*3+1]+=1
         if date[i*3+1]>12:
             date[i*3+1]-=12
@@ -62,6 +51,4 @@ while i<len(date)//3:
     else:
         pass
     i+=1
-print("No of ice creams spoiled:",n-count)
-
-
+print("\nNo of ice creams spoiled:",n-count)
